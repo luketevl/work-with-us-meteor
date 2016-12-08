@@ -1,0 +1,31 @@
+<template name="header">
+
+	<header>
+		<div class="container">
+			<nav class="navbar" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="https://www.tagplus.com.br/">
+							<img src="/images/tagplus_logo.png"/>
+						</a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+			        <li><a href="{{pathFor 'jobsContainer'}}">Vagas</a></li>
+							<li><a href="{{pathFor 'candidatesContainer'}}">Candidatos</a></li>
+							<!-- <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gerenciamento <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#">Campos para Candidatos</a></li>
+			          </ul>
+		        	</li> -->
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="https://www.tagplus.com.br"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+</template>
