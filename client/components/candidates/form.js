@@ -4,6 +4,10 @@ Template.candidatesForm.events({
     const name = $('#name').val();
     const email = $('#email').val();
     const phone = $('#phone').val();
+
+    // TESTES
+    $('#candidateModal').modal('hide');
+    $('#mensagemCandidateSuccessModal').modal('show');
     if(name == '') {
       FlashMessages.clear();
       FlashMessages.sendError("Nome é obrigatório");
@@ -19,19 +23,21 @@ Template.candidatesForm.events({
       FlashMessages.sendError("Telefone é obrigatório");
       return false;
     }
-    $('#candidateModal').modal('hide');
     const active = $('#active').prop('checked') ? 1 : 0;
     const _id = $('#_id').val();
+    $('#candidateModal').modal('hide');
     if(_id){
-      Jobs.update({_id} ,{name, active, updateAt: new Date()});
+      Candidates.update({_id} ,{name, active, updateAt: new Date()});
       sAlert.closeAll();
       sAlert.success("Canditado editado");
     }
     else{
-      Jobs.insert({name, active, dataAt: new Date()});
+      Candidates.insert({name, active, dataAt: new Date()});
       sAlert.closeAll();
       sAlert.success("Candidato cadastrado");
+      $('#mensagemCandidateSuccessModal').modal('show');
     }
+
     $('form')[0].reset();
     $('#_id').val('');
   }
