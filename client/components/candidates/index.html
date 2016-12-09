@@ -1,4 +1,4 @@
-<template name="jobsContainer">
+<template name="candidatesContainer">
 <button name="new" id="btnNew" class="btn btn-success" data-toggle="modal" data-target="#jobModal">Nova Vaga</button>
 
   <!-- Modal -->
@@ -10,7 +10,7 @@
           <h4 class="modal-title" id="myModalLabel">Vaga</h4>
         </div>
         <div class="modal-body">
-          {{> jobsForm}}
+          {{> candidatesForm}}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -19,5 +19,5 @@
     </div>
   </div>
 
-  {{> jobsList}}
+  {{> candidatesList}}
 </template>

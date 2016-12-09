@@ -1,4 +1,4 @@
-<template name="jobsForm">
+<template name="statusForm">
   <div class="row">
     <div class="col-xs-12">
 
@@ -6,12 +6,14 @@
         <input type="hidden" name="_id" value="" id="_id">
         <div class="form-group">
           <label for="name">Ativo / Nome</label>
+
           <div class="input-group">
             <span class="input-group-addon">
               <input type="checkbox" name="active" id="active" aria-label="Ativo" checked>
             </span>
-            <input type="text" name="name" class="form-control" id="name" placeholder="Digite o nome da vaga" />
+            <input type="text" name="name" class="form-control" id="name" placeholder="Digite o nome da status" />
           </div>
+
         </div>
         <div class="form-group">
           <button name="new" class="btn btn-success">Salvar</button>

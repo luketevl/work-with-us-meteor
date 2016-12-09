@@ -1,16 +1,16 @@
-<template name="jobsContainer">
-<button name="new" id="btnNew" class="btn btn-success" data-toggle="modal" data-target="#jobModal">Nova Vaga</button>
+<template name="statusContainer">
+<button name="new" id="btnNew" class="btn btn-success" data-toggle="modal" data-target="#statusModal">Novo Status</button>
 
   <!-- Modal -->
-  <div class="modal fade" id="jobModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Vaga</h4>
+          <h4 class="modal-title" id="labelModalStatus">Status</h4>
         </div>
         <div class="modal-body">
-          {{> jobsForm}}
+          {{> statusForm}}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -19,5 +19,5 @@
     </div>
   </div>
 
-  {{> jobsList}}
+  {{> statusList}}
 </template>

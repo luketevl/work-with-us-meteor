@@ -1,24 +1,24 @@
-Template.jobsForm.events({
+Template.statusForm.events({
   "submit form": (e, template) =>{
     e.preventDefault();
     const name = $('#name').val();
     if(name == '') {
       FlashMessages.clear();
-      FlashMessages.sendError("Nome da vaga é obrigatório");
+      FlashMessages.sendError("Nome do status é obrigatório");
       return false;
     }
-    $('#jobModal').modal('hide');
+    $('#statusModal').modal('hide');
     const active = $('#active').prop('checked') ? 1 : 0;
     const _id = $('#_id').val();
     if(_id){
-      Jobs.update({_id} ,{name, active, updateAt: new Date()});
+      StatusCandidate.update({_id} ,{name, active, updateAt: new Date()});
       sAlert.closeAll();
-      sAlert.success("Vaga editada");
+      sAlert.success("Status editado");
     }
     else{
-      Jobs.insert({name, active, dataAt: new Date()});
+      StatusCandidate.insert({name, active, dataAt: new Date()});
       sAlert.closeAll();
-      sAlert.success("Vaga cadastrada");
+      sAlert.success("Status editado");
     }
     $('form')[0].reset();
   }

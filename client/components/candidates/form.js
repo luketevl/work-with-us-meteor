@@ -1,4 +1,4 @@
-Template.jobsForm.events({
+Template.candidatesForm.events({
   "submit form": (e, template) =>{
     e.preventDefault();
     const name = $('#name').val();

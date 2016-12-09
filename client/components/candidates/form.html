@@ -1,0 +1,56 @@
+<template name="candidatesForm">
+  <div class="row">
+    <div class="col-xs-12">
+      {{> flashMessages}}
+      <form class="">
+        <input type="hidden" name="_id" value="" id="_id">
+
+        <div class="checkbox">
+         <label>
+           <input type="checkbox" name="active" id="active" aria-label="Ativo" checked> ativo
+         </label>
+       </div>
+
+       <div class="form-group">
+          <label for="exampleInputEmail1">Nome</label>
+          <input type="name" class="form-control" id="name" placeholder="Nome">
+        </div>
+
+        <div class="form-group">
+           <label for="exampleInputEmail1">E-mail</label>
+           <input type="email" class="form-control" id="email" placeholder="Email">
+         </div>
+
+         <div class="form-group">
+            <label for="exampleInputEmail1">Telefone</label>
+            <input type="phone" class="form-control" id="phone" placeholder="Informe o melhor telefone para contato">
+          </div>
+
+          <div class="form-group">
+             <label for="exampleInputEmail1">Facebook</label>
+             <input type="urlFacebook" class="form-control" id="urlFacebook" placeholder="URL do Facebook">
+           </div>
+
+           <div class="form-group">
+              <label for="exampleInputEmail1">Linkedin</label>
+              <input type="urlLinkedin" class="form-control" id="urlLinkedin" placeholder="URL do Linkedin">
+            </div>
+
+
+          <div class="form-group">
+            <label for="exampleInputFile">Curriculo</label>
+            <input type="file" id="fileCurriculo">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputFile">Sobre</label>
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+
+        <div class="form-group">
+          <button name="new" class="btn btn-success">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
