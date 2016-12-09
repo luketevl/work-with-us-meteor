@@ -14,21 +14,21 @@
               </th>
         </thead>
         <tbody>
-          {{#each status}}
+          {{#each statusCandidate}}
           <tr>
               {{#if active}}
                 <td class="success text-center" width="5%">
                   <span>Sim</span>
                 </td>
               {{else}}
-                <td class="danger" width="5%">
+                <td class="danger text-center" width="5%">
                   <span>Não</span>
                 </td>
               {{/if}}
             <td>{{name}}</td>
             <td class="text-center" width="12%">
               <button name="button" class="btn btn-info edit">Editar</button>
-              <button name="button" class="btn btn-danger delete">Deletar</button>
+              <button name="button" class="btn btn-danger delete">Apagar</button>
             </td>
           </tr>
           {{/each}}

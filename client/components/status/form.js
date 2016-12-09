@@ -18,8 +18,10 @@ Template.statusForm.events({
     else{
       StatusCandidate.insert({name, active, dataAt: new Date()});
       sAlert.closeAll();
-      sAlert.success("Status editado");
+        sAlert.success("Status cadastrado");
     }
     $('form')[0].reset();
-  }
+    $('#_id').val('');
+  },
+
 })

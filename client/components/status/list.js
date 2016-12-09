@@ -17,7 +17,7 @@ Template.statusList.events({
       closeOnConfirm: true
      }, function(){
         StatusCandidate.remove({_id: status._id});
-        sAlert.success("Status deletado");
+        sAlert.success("Status apagado");
     });
   },
 
@@ -26,6 +26,6 @@ Template.statusList.events({
     $('#name').val(this.name);
     $('#_id').val(this._id);
     $('#active').prop('checked', (this.active));
-    $('#jobModal').modal('show');
+    $('#statusModal').modal('show');
   },
 })

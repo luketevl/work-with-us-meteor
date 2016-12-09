@@ -1,6 +1,6 @@
 Template.candidatesList.helpers({
-  jobs(){
-    return Jobs.find({});
+  candidates(){
+    return Candidates.find({});
   }
 });
 
@@ -17,7 +17,7 @@ Template.candidatesList.events({
       closeOnConfirm: true
      }, function(){
         Jobs.remove({_id: job._id});
-        sAlert.success("Vaga deletada");
+        sAlert.success("Candidato apagado");
     });
   },
 
@@ -26,6 +26,6 @@ Template.candidatesList.events({
     $('#name').val(this.name);
     $('#_id').val(this._id);
     $('#active').prop('checked', (this.active));
-    $('#jobModal').modal('show');
+    $('#candidatesModal').modal('show');
   },
 })

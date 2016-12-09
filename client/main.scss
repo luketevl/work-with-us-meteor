@@ -12,6 +12,22 @@ table{
 #btnNew{
   margin-top: 20px;
 }
+
+.modal-header {
+  display: block;
+  background-image: url(images/bg_tittulo_modal.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 80px;
+  color: #fff;
+  background-color: #2763bf;
+  border-width: 0;
+  button{
+    span{
+      color: #FFF;
+    }
+  }
+}
 /*---- Banner----- */
 #trabalhe{
 

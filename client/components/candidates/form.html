@@ -1,13 +1,13 @@
 <template name="candidatesForm">
   <div class="row">
     <div class="col-xs-12">
-      {{> flashMessages}}
+
       <form class="">
         <input type="hidden" name="_id" value="" id="_id">
 
         <div class="checkbox">
          <label>
-           <input type="checkbox" name="active" id="active" aria-label="Ativo" checked> ativo
+           <input type="checkbox" name="active" id="active" aria-label="Ativo" checked> Ativo
          </label>
        </div>
 
@@ -51,6 +51,7 @@
           <button name="new" class="btn btn-success">Salvar</button>
         </div>
       </form>
+      {{> flashMessages}}
     </div>
   </div>
 </template>

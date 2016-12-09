@@ -4,22 +4,23 @@ Template.candidatesForm.events({
     const name = $('#name').val();
     if(name == '') {
       FlashMessages.clear();
-      FlashMessages.sendError("Nome da vaga é obrigatório");
+      FlashMessages.sendError("Nome é obrigatório");
       return false;
     }
-    $('#jobModal').modal('hide');
+    $('#candidateModal').modal('hide');
     const active = $('#active').prop('checked') ? 1 : 0;
     const _id = $('#_id').val();
     if(_id){
       Jobs.update({_id} ,{name, active, updateAt: new Date()});
       sAlert.closeAll();
-      sAlert.success("Vaga editada");
+      sAlert.success("Canditado editado");
     }
     else{
       Jobs.insert({name, active, dataAt: new Date()});
       sAlert.closeAll();
-      sAlert.success("Vaga cadastrada");
+      sAlert.success("Candidato cadastrado");
     }
     $('form')[0].reset();
+    $('#_id').val('');
   }
 })
