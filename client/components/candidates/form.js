@@ -2,9 +2,21 @@ Template.candidatesForm.events({
   "submit form": (e, template) =>{
     e.preventDefault();
     const name = $('#name').val();
+    const email = $('#email').val();
+    const phone = $('#phone').val();
     if(name == '') {
       FlashMessages.clear();
       FlashMessages.sendError("Nome é obrigatório");
+      return false;
+    }
+    else if(email == '') {
+      FlashMessages.clear();
+      FlashMessages.sendError("E-mail é obrigatório");
+      return false;
+    }
+    else if(phone == '') {
+      FlashMessages.clear();
+      FlashMessages.sendError("Telefone é obrigatório");
       return false;
     }
     $('#candidateModal').modal('hide');
