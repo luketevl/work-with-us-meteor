@@ -1,32 +1,54 @@
 <template name="candidatesForm">
-  <div class="row">
-    <div class="col-xs-12">
+  <div class="container-fluid">
 
-      <form class="">
-        <input type="hidden" name="_id" value="" id="_id">
+    <form class="">
+      <input type="hidden" name="_id" value="" id="_id">
+    <div class="row">
+      <div class="col-xs-12">
 
-        <div class="checkbox">
-         <label>
-           <input type="checkbox" name="active" id="active" aria-label="Ativo" checked> Ativo
-         </label>
-       </div>
-
-       <div class="form-group">
-          <label for="nome">Nome*</label>
-          <input type="name" class="form-control" id="name" placeholder="Nome">
+        <div class="col-xs-6">
+          <div class="checkbox">
+           <label>
+             <input type="checkbox" name="active" id="active" aria-label="Ativo" checked> Ativo
+           </label>
+          </div>
         </div>
 
-        <div class="form-group">
-           <label for="email">E-mail*</label>
-           <input type="email" class="form-control" id="email" placeholder="Email">
-         </div>
+        <div class="col-xs-6">
+          <div class="form-group">
+             <label for="status">Status*</label>
+             <select name="status" class="form-control">
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+               <option>4</option>
+               <option>5</option>
+             </select>
+           </div>
+        </div>
 
-         <div class="form-group">
-            <label for="telefone">Telefone*</label>
-            <input type="phone" class="form-control" id="phone" placeholder="Informe o melhor telefone para contato">
-          </div>
+        <div class="col-xs-6">
+          <div class="form-group">
+             <label for="nome">Nome*</label>
+             <input type="name" class="form-control" id="name" placeholder="Nome">
+           </div>
+        </div>
 
+        <div class="col-xs-6">
+          <div class="form-group">
+             <label for="email">E-mail*</label>
+             <input type="email" class="form-control" id="email" placeholder="Email">
+           </div>
+        </div>
 
+        <div class="col-xs-6">
+          <div class="form-group">
+             <label for="telefone">Telefone*</label>
+             <input type="phone" class="form-control" id="phone" placeholder="Informe o melhor telefone para contato">
+           </div>
+        </div>
+
+        <div class="col-xs-6">
           <div class="form-group">
              <label for="vaga">Vagas*</label>
              <select name="job" class="form-control">
@@ -37,47 +59,40 @@
                <option>5</option>
              </select>
            </div>
+        </div>
 
-           <div class="form-group">
-              <label for="status">Status*</label>
-              <select name="status" class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-
-
-
-
+        <div class="col-xs-6">
           <div class="form-group">
              <label for="exampleInputEmail1">Facebook</label>
              <input type="urlFacebook" class="form-control" id="urlFacebook" placeholder="URL do Facebook">
            </div>
+        </div>
 
-           <div class="form-group">
-              <label for="exampleInputEmail1">Linkedin</label>
-              <input type="urlLinkedin" class="form-control" id="urlLinkedin" placeholder="URL do Linkedin">
-            </div>
-
-
+        <div class="col-xs-6">
           <div class="form-group">
-            <label for="exampleInputFile">Curriculo*</label>
-            <input type="file" id="fileCurriculo">
-          </div>
+             <label for="exampleInputEmail1">Linkedin</label>
+             <input type="urlLinkedin" class="form-control" id="urlLinkedin" placeholder="URL do Linkedin">
+           </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="exampleInputFile">Curriculo*</label>
+          {{> upload_bootstrap fileTypes='.pdf, .doc, .docx'}}
+        </div>
 
           <div class="form-group">
             <label for="exampleInputFile">Sobre</label>
-            <textarea class="form-control" rows="3"></textarea>
+            <textarea class="form-control" rows="4"></textarea>
+            <p class="help-block text-right">Campos marcados com <strong>*</strong> são obrigatórios.</p>
           </div>
 
-        <div class="form-group">
-          <button name="new" class="btn btn-success">Salvar</button>
-        </div>
-      </form>
-      {{> flashMessages}}
+          <div class="form-group">
+            <button name="new" class="btn btn-success">Salvar</button>
+          </div>
+        {{> flashMessages}}
+      </div>
     </div>
+  </form>
   </div>
 </template>

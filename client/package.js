@@ -28,5 +28,9 @@ Meteor.startup(function () {
         //     /* Code here will be executed once the alert closes. */
         // }
     });
-
+    Uploader.finished = function(index, file) {
+      console.log('RODANDO FINISHED UPLOAD');
+      console.log(file);
+        Uploads.insert(file);
+      }
 });
