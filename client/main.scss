@@ -79,7 +79,8 @@ table{
       padding: 20px 0;
       list-style:none;
       display: inline-flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      flex-wrap: wrap;
       width: 100%;
       h3 {
         margin-bottom: 0;

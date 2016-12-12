@@ -1,12 +1,20 @@
 Template.candidatesList.helpers({
   candidates(){
-    return Candidates.find({});
-  }
+    let cand = Candidates.find();
+    let result = cand.map(el => {
+      el.jobs.forEach(idJob => {
+        el.jobs = Jobs.find({_id: idJob});
+      })
+      el.status = StatusCandidate.find({_id: el.status});
+       return el;
+    });
+    return result;
+  },
 });
 
 Template.candidatesList.events({
   "click button.delete": function(e, template){
-    const job = this;
+    const candidate = this;
     swal({
       title: "Deseja realmente apagar?",
       text: "Não é possível recuperar uma informação apagada!",
@@ -16,16 +24,26 @@ Template.candidatesList.events({
       confirmButtonText: "Sim, apagar agora!",
       closeOnConfirm: true
      }, function(){
-        Jobs.remove({_id: job._id});
+        Candidates.remove({_id: candidate._id});
         sAlert.success("Candidato apagado");
     });
   },
 
   "click button.edit": function(e, template){
-    const job = this;
-    $('#name').val(this.name);
+    const candidate = this;
+    this.jobs.forEach(el => {
+      $('#job').val(el._id);
+    });
+    this.status.forEach(el => {
+      $('#status').val(el._id);
+    });
+
     $('#_id').val(this._id);
+    $('#name').val(this.name);
+    $('#email').val(this.email);
+    $('#phone').val(this.phone);
     $('#active').prop('checked', (this.active));
-    $('#candidatesModal').modal('show');
+    $('#candidateModal').modal('show');
+
   },
 })

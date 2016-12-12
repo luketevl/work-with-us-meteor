@@ -8,7 +8,7 @@ Template.jobsForm.events({
       return false;
     }
     $('#jobModal').modal('hide');
-    const active = $('#active').prop('checked') ? 1 : 0;
+    const active = $('#active').prop('checked');
     const _id = $('#_id').val();
     if(_id){
       Jobs.update({_id} ,{name, active, updateAt: new Date()});
@@ -21,5 +21,6 @@ Template.jobsForm.events({
       sAlert.success("Vaga cadastrada");
     }
     $('form')[0].reset();
+    $('#_id').val('');
   }
 })

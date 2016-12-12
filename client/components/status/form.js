@@ -8,7 +8,7 @@ Template.statusForm.events({
       return false;
     }
     $('#statusModal').modal('hide');
-    const active = $('#active').prop('checked') ? 1 : 0;
+    const active = $('#active').prop('checked');
     const _id = $('#_id').val();
     if(_id){
       StatusCandidate.update({_id} ,{name, active, updateAt: new Date()});

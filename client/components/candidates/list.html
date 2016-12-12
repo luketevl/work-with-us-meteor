@@ -26,7 +26,7 @@
               </th>
         </thead>
         <tbody>
-          {{#each jobs}}
+          {{#each candidates}}
           <tr>
               {{#if active}}
                 <td class="success text-center" width="5%">
@@ -40,8 +40,19 @@
             <td>{{name}}</td>
             <td>{{email}}</td>
             <td>{{phone}}</td>
-            <td>{{phone}}</td>
-            <td>{{phone}}</td>
+
+            {{#each jobs}}
+              <td>{{name}}</td>
+              {{else}}
+              <td></td>
+            {{/each}}
+
+            {{#each status}}
+              <td>{{name}}</td>
+              {{else}}
+                <td></td>
+            {{/each}}
+
             <td class="text-center" width="12%">
               <button name="button" class="btn btn-info edit">Editar</button>
               <button name="button" class="btn btn-danger delete">Apagar</button>
