@@ -46,7 +46,8 @@ Template.candidatesForm.events({
 
     $('form')[0].reset();
     $('#_id').val('');
-  }
+  },
+
 });
 
 Template.candidatesForm.helpers({
@@ -62,5 +63,5 @@ Template.candidatesForm.helpers({
   },
   status(){
     return StatusCandidate.find({active: true});
-  }
+  },
 });
