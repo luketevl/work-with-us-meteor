@@ -110,7 +110,7 @@ table{
   	background-image:url(images/bg_body.jpg);
   	background-repeat:repeat-y;
   	background-attachment:fixed;
-  	padding-top:32px;
+  	padding:32px 0;
   	min-height:428px;
   	text-align:center;
   	margin-top:30px;
@@ -138,4 +138,12 @@ table{
 }
 .btn-red:hover{
 	background-color:#ee623d;
+}
+
+.carousel-inner > .item > img{
+  display: inline;
+}
+
+.carousel-control.left, .carousel-control.right{
+  background-image: none;
 }

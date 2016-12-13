@@ -42,6 +42,8 @@ Template.candidatesList.events({
     $('#name').val(this.name);
     $('#email').val(this.email);
     $('#phone').val(this.phone);
+    $('#urlFacebook').val(this.urlFacebook);
+    $('#urlLinkedin').val(this.urlLinkedin);
     $('#active').prop('checked', (this.active));
     $('#candidateModal').modal('show');
 

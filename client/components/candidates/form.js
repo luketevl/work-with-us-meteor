@@ -27,37 +27,39 @@ Template.candidatesForm.events({
       return false;
     }
 
-    const _id = $('#_id').val();
-    const active = $('#active').prop('checked');
-    const status  = $('#status').val();
+    const _id           = $('#_id').val();
+    let active = $('#active');
+    if(active == undefined){
+      active = true;
+    }
+    else{
+      active = active.prop('checked');
+    }
+    const status        = $('#status').val();
+    const urlFacebook   = $('#urlFacebook').val();
+    const urlLinkedin   = $('#urlLinkedin').val();
 
     $('#candidateModal').modal('hide');
     if(_id){
-      Candidates.update({_id} ,{ $set: {active, name, email, status, phone, jobs:[job], updateAt: new Date()}});
+      Candidates.update({_id} ,{ $set: {active, name, email, status, phone, urlFacebook, urlLinkedin, jobs:[job], updateAt: new Date()}});
       sAlert.closeAll();
       sAlert.success("Canditado editado");
     }
     else{
-      Candidates.insert({active, name, email, status, phone, jobs:[job], addedAt: new Date()});
+      Candidates.insert({active, name, email, status, phone, urlFacebook, urlLinkedin, jobs:[job], addedAt: new Date()});
       sAlert.closeAll();
       sAlert.success("Candidato cadastrado");
       $('#mensagemCandidateSuccessModal').modal('show');
     }
-
     $('form')[0].reset();
     $('#_id').val('');
+    $('#urlFacebook').val('');
+    $('#urlLinkedin').val('');
   },
 
 });
 
 Template.candidatesForm.helpers({
-  specificFormData: function() {
-    return {
-      id: this._id,
-      hard: 'teste'
-    }
-  },
-
   jobs(){
     return Jobs.find({active: true});
   },
