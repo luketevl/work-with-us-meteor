@@ -1,9 +1,9 @@
 module.exports = {
   servers: {
     prod: {
-      host: '127.0.0.1',
-      username: 'ubuntu'
-      // pem:
+      host: 'yoda.gat',
+      username: 'ubuntu',
+       pem: '/Users/lhenrique/Downloads/yoda.pem',
       //password:
       // or leave blank for authenticate from ssh-agent
     },
@@ -22,10 +22,8 @@ module.exports = {
     },
     env: {
       ROOT_URL: 'https://vagas.tagplus.com.br',
-      MONGO_URL: 'mongodb://<user>:<password>@<server>/<database>'
+      MONGO_URL: 'mongodb://localhost/vagas'
     },
-
-    //dockerImage: 'kadirahq/meteord'
     deployCheckWaitTime: 60
   },
 
