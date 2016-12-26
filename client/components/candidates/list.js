@@ -39,6 +39,7 @@ Template.candidatesList.events({
     });
 
     $('#_id').val(this._id);
+    $('#urlCurriculo').val(this.urlCurriculo);
     $('#name').val(this.name);
     $('#email').val(this.email);
     $('#phone').val(this.phone);

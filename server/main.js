@@ -1,9 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 
-Meteor.startup(() => {
-});
-
-
 // logiin
 Accounts.validateNewUser(user => {
   user.emails.forEach(email => {
@@ -12,4 +8,26 @@ Accounts.validateNewUser(user => {
     }
   });
   return true;
+});
+
+Slingshot.fileRestrictions("myFileUploads", {
+  allowedFileTypes: ["application/dpc", "application/docx", "application/pdf"],
+  maxSize: 4 * 1024 * 1024,
+});
+
+Slingshot.createDirective("myFileUploads", Slingshot.S3Storage, {
+  AWSAccessKeyId: "AKIAIIFNQFV2XGV5NC5A",
+  AWSSecretAccessKey: "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",
+  bucket: "gattecnologia",
+  acl: "public-read",
+  region: "sa-east-1",
+
+  key(file) {
+    return `vagas/${file.name}`;
+  },
+
+  authorize(){
+    return true;
+  }
+
 });
