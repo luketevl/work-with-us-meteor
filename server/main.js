@@ -11,19 +11,19 @@ Accounts.validateNewUser(user => {
 });
 
 Slingshot.fileRestrictions("myFileUploads", {
-  allowedFileTypes: ["application/dpc", "application/docx", "application/pdf"],
+  allowedFileTypes: ["application/doc", "application/docx", "application/pdf"],
   maxSize: 4 * 1024 * 1024,
 });
 
 Slingshot.createDirective("myFileUploads", Slingshot.S3Storage, {
-  AWSAccessKeyId: "",
+  AWSAccessKeyId: "", 
   AWSSecretAccessKey: "",
-  bucket: "",
+  bucket: "gattecnologia",
   acl: "public-read",
   region: "sa-east-1",
 
   key(file) {
-    return `vagas/${file.name}`;
+    return `vagas/${file._id}`;
   },
 
   authorize(){

@@ -7,6 +7,8 @@ Template.candidatesForm.events({
     const email   = $('#email').val();
     const phone   = $('#phone').val();
     const job     = $('#job').val();
+    let file      = document.getElementById('uploadFile').files[0];
+    const regex   = new RegExp("(.*?)\.(docx|doc|pdf)$");
 
     if(name == '') {
       FlashMessages.clear();
@@ -28,10 +30,22 @@ Template.candidatesForm.events({
       FlashMessages.sendError("Vaga é obrigatória");
       return false;
     }
-
+    else if(!Meteor.userId()){
+      if(file == undefined){
+        FlashMessages.clear();
+        FlashMessages.sendError("Curriculo é obrigatório");
+        return false;
+      }
+      else if(!regex.test(file.type)){
+        FlashMessages.clear();
+        FlashMessages.sendError("Curriculo deve estar nos seguintes formatos: <b>pdf, doc e docx</b>");
+        return false;
+      }
+    }
     const _id           = $('#_id').val();
     let active = $('#active');
-    if(active == undefined){
+
+    if(!Meteor.userId()){
       active = true;
     }
     else{
@@ -41,41 +55,12 @@ Template.candidatesForm.events({
     const urlFacebook   = $('#urlFacebook').val();
     const urlLinkedin   = $('#urlLinkedin').val();
 
-    // Faz upload
-    let file = document.getElementById('uploadFile').files[0];
-    file.name = _id;
     $('#candidateModal').modal('hide');
     if(_id){
       Candidates.update({_id} ,{ $set: {active, name, email, status, phone, urlFacebook, urlLinkedin, jobs:[job], updateAt: new Date()}});
 
-      const upload = new Slingshot.Upload("myFileUploads");
-      const timeStamp = Math.floor(Date.now());
-
-      upload.send(file, function (error, urlCurriculo) {
-      uploader.set();
-      if (error) {
-        console.error('Error uploading');
-        console.log(error);
-      }
-      else{
-        console.log("Success!");
-        console.log('uploaded file available here: '+urlCurriculo);
-        Candidates.update({_id} ,{ $set: {urlCurriculo, updateAt: new Date()}});
-      }
-      });
-      uploader.set(upload);
-
-      sAlert.closeAll();
-      sAlert.success("Canditado editado");
-    }
-    else{
-      Candidates.insert({active, name, email, status, phone, urlFacebook, urlLinkedin, jobs:[job], addedAt: new Date()},
-      (err, data) => {
-        if(err) return false;
-        console.log(data);
-        console.log(file);
-        file.name = data._id;
-        console.log(file);
+      if(file){
+        file._id = _id;
         const upload = new Slingshot.Upload("myFileUploads");
         const timeStamp = Math.floor(Date.now());
 
@@ -88,11 +73,37 @@ Template.candidatesForm.events({
         else{
           console.log("Success!");
           console.log('uploaded file available here: '+urlCurriculo);
-          Candidates.update({_id: data._id} ,{ $set: {urlCurriculo, updateAt: new Date()}});
+          Candidates.update({_id} ,{ $set: {urlCurriculo, updateAt: new Date()}});
         }
         });
         uploader.set(upload);
+      }
+      sAlert.closeAll();
+      sAlert.success("Canditado editado");
+    }
+    else{
+      Candidates.insert({active, name, email, status, phone, urlFacebook, urlLinkedin, jobs:[job], addedAt: new Date()},
+      (err, data) => {
+        if(err) return false;
+        if(file){
+          file._id = _id;
+          const upload = new Slingshot.Upload("myFileUploads");
+          const timeStamp = Math.floor(Date.now());
 
+          upload.send(file, function (error, urlCurriculo) {
+          uploader.set();
+          if (error) {
+            console.error('Error uploading');
+            console.log(error);
+          }
+          else{
+            console.log("Success!");
+            console.log('uploaded file available here: '+urlCurriculo);
+            Candidates.update({_id: data._id} ,{ $set: {urlCurriculo, updateAt: new Date()}});
+          }
+          });
+          uploader.set(upload);
+        }
 
       });
       sAlert.closeAll();
@@ -107,10 +118,6 @@ Template.candidatesForm.events({
     $('#urlCurriculo').val('');
 
   },
- 'change .uploadFile': function(event, template) {
-
-
-     },
 });
 
 Template.candidatesForm.helpers({
@@ -120,9 +127,5 @@ Template.candidatesForm.helpers({
   status(){
     return StatusCandidate.find({active: true});
   },
-
-  isUploading(){
-       return Boolean(uploader.get());
-   },
 
 });
