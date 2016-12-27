@@ -23,7 +23,7 @@ Slingshot.createDirective("myFileUploads", Slingshot.S3Storage, {
   region: "sa-east-1",
 
   key(file) {
-    return `vagas/${file._id}`;
+    return `vagas/${Random.id()}`;
   },
 
   authorize(){
