@@ -86,7 +86,7 @@ Template.candidatesForm.events({
       (err, data) => {
         if(err) return false;
         if(file){
-          file._id = _id;
+          file._id = data._id;
           const upload = new Slingshot.Upload("myFileUploads");
           const timeStamp = Math.floor(Date.now());
 

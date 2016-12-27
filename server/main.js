@@ -16,9 +16,9 @@ Slingshot.fileRestrictions("myFileUploads", {
 });
 
 Slingshot.createDirective("myFileUploads", Slingshot.S3Storage, {
-  AWSAccessKeyId: "", 
+  AWSAccessKeyId: "",
   AWSSecretAccessKey: "",
-  bucket: "gattecnologia",
+  bucket: "",
   acl: "public-read",
   region: "sa-east-1",
 
