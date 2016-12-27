@@ -37,9 +37,8 @@ Template.candidatesList.events({
     this.status.forEach(el => {
       $('#status').val(el._id);
     });
-
     $('#_id').val(this._id);
-    $('#urlCurriculo').val(this.urlCurriculo);
+    $('#urlCurriculo').attr('href', this.urlCurriculo);
     $('#name').val(this.name);
     $('#email').val(this.email);
     $('#phone').val(this.phone);
